@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>My Cusco Trip · Acceso</title>
+<meta name="description" content="Accede a tu panel de My Cusco Trip con tu correo y un código de verificación.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#123c30;--forest-dark:#0e2d25;--green:#07873e;--mint:#e8f4ea;--ink:#1d3029;--muted:#6b8077;--line:#e1e9e2;--canvas:#f4f7f3;--white:#fff;--red:#b34642;--shadow:0 30px 85px rgba(13,54,36,.1)}
+*{box-sizing:border-box}body{margin:0;font-family:'DM Sans',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--canvas);min-height:100vh}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.6;cursor:wait}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #a7dfb5;outline-offset:2px}
+.shell{min-height:100vh;display:grid;grid-template-columns:minmax(310px,45%) 1fr}.story{background:var(--forest);color:#fff;padding:clamp(28px,5vw,76px);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}.story:after{content:'';position:absolute;width:580px;height:580px;border-radius:50%;border:1px solid rgba(255,255,255,.14);right:-360px;bottom:-210px;box-shadow:0 0 0 80px rgba(255,255,255,.025),0 0 0 160px rgba(255,255,255,.03);pointer-events:none}.brand{display:flex;align-items:center;gap:13px;font:800 21px/1.15 Manrope,sans-serif;letter-spacing:-.6px}.brand-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:#d8f0dd;color:#176d3c;font-size:25px;font-weight:800}.story-main{max-width:450px;position:relative;z-index:1}.eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 0 18px;color:#bed8c6;font-size:12px;letter-spacing:.18em;font-weight:800;text-transform:uppercase}.eyebrow:before{content:'';width:7px;height:7px;background:#98d3a4;border-radius:50%}.story h1{font:800 clamp(36px,4.1vw,60px)/1.09 Manrope,sans-serif;letter-spacing:-2.5px;margin:0 0 24px}.story h1 em{color:#b0e8b6;font-style:normal}.story p{line-height:1.7;color:#d1e1d7;font-size:16px;max-width:410px}.story-footer{font-size:12px;color:#afc8b8;position:relative;z-index:1}
+.main{display:grid;place-items:center;padding:40px clamp(18px,4vw,68px);position:relative}.login{width:100%;max-width:480px}.mini-brand{display:none;color:var(--forest);font-weight:800;font-size:19px;align-items:center;gap:9px;margin-bottom:35px}.mini-brand .brand-mark{width:34px;height:34px;font-size:20px}.overline{color:var(--green);font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin:0 0 12px}.login h2{font:800 clamp(29px,3.6vw,37px)/1.17 Manrope,sans-serif;letter-spacing:-1.35px;margin:0 0 13px;color:var(--forest)}.intro{color:var(--muted);line-height:1.65;margin:0 0 31px;font-size:15px}.field{margin-bottom:19px}.field label{display:block;margin-bottom:8px;color:#344d40;font-weight:700;font-size:13px}.input{display:block;width:100%;height:53px;padding:0 15px;background:var(--white);border:1px solid #d7e3d9;border-radius:12px;color:var(--ink);transition:box-shadow .2s,border-color .2s}.input:focus{border-color:#71bd85;outline:none;box-shadow:0 0 0 3px rgba(7,135,62,.1)}.rowphone{display:grid;grid-template-columns:minmax(145px,1fr) minmax(150px,1.1fr);gap:12px}.select-wrap{position:relative}.select-wrap select{appearance:none;padding-right:33px}.select-wrap:after{content:'⌄';position:absolute;right:14px;top:11px;font-size:25px;color:#658074;pointer-events:none}.note{font-size:12px;color:var(--muted);line-height:1.5;margin:6px 0 25px}.primary{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;border:0;background:var(--green);color:#fff;padding:16px 18px;border-radius:12px;font-weight:800;font-size:15px;box-shadow:0 11px 24px rgba(7,135,62,.15);transition:background .2s,transform .2s}.primary:hover{background:#056b32;transform:translateY(-1px)}.secondary{border:none;background:none;padding:9px 0;color:var(--green);font-weight:700}.secondary:hover{text-decoration:underline}.error{color:var(--red);font-size:13px;line-height:1.55;min-height:22px;margin:13px 0 0}.info{background:#ecf6ef;border:1px solid #d1e9d8;color:#275b3c;border-radius:13px;padding:15px;font-size:13px;line-height:1.6;margin:14px 0}.hidden{display:none!important}.code-input{text-align:center;font:800 28px Manrope,sans-serif;letter-spacing:.25em}.back{margin-bottom:23px}.resendbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:13px;font-size:12px;color:var(--muted)}.loading{display:inline-flex;align-items:center;gap:9px}.spinner{width:16px;height:16px;border:2px solid #ffffff85;border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.apparea{position:fixed;inset:0;background:var(--canvas);z-index:50;display:flex;flex-direction:column}.appbar{height:59px;flex:0 0 auto;background:var(--forest);display:flex;justify-content:space-between;align-items:center;color:#fff;padding:0 20px}.env-label{font-size:11px;font-weight:750;letter-spacing:.01em;color:#d5ecdb;background:#ffffff1a;border:1px solid #ffffff32;border-radius:999px;padding:6px 9px}.appbar .brand{font-size:15px}.appbar .brand-mark{width:31px;height:31px;border-radius:9px;font-size:20px}.appbar .secondary{color:#fff}.appframe{width:100%;border:0;flex:1;min-height:0;background:#f4f7f3}.app-loading{display:grid;place-items:center;flex:1;color:var(--muted);font-weight:700}.app-loading .spinner{border-color:#bdd2bf;border-top-color:var(--green)}
+@media(max-width:940px){.shell{grid-template-columns:35% 1fr}.story{padding:35px}.story h1{font-size:36px;letter-spacing:-1px}}@media(max-width:740px){.shell{display:block}.story{display:none}.mini-brand{display:flex}.main{min-height:100vh;padding:40px 22px}.login{max-width:460px}.rowphone{grid-template-columns:1fr 1.1fr}.appbar{padding:0 12px}.appbar .brand{font-size:13px}.appbar .secondary{font-size:13px}}@media(max-width:370px){.rowphone{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Personalización Bókun-inspired: identidad propia My Cusco Trip. */
+:root{--lime:#dbff26;--lime-light:#f5ffce;--lime-dark:#bde51b;--forest:#163a2d}
+body{background:#f7f9f6}
+.story{background:var(--lime);color:#0b140c}
+.story:after{width:630px;height:630px;right:-370px;bottom:-265px;border:2px solid rgba(24,45,22,.12);box-shadow:0 0 0 68px rgba(22,60,36,.045),0 0 0 140px rgba(22,60,36,.025)}
+.story:before{content:'';position:absolute;top:17%;right:-73px;height:125px;width:125px;border:16px solid #153b2e;border-radius:50%;opacity:.09;pointer-events:none}
+.brand{color:#102217;font-weight:850}
+.brand-mark{background:#0c1d13;color:var(--lime);border-radius:12px}
+.story-main{max-width:510px}
+.eyebrow{color:#213722;letter-spacing:.13em}
+.eyebrow:before{background:#163b2d;box-shadow:0 0 0 4px rgba(20,60,36,.09)}
+.story h1{font-family:Georgia,'Times New Roman',serif;font-weight:750;letter-spacing:-2.05px;line-height:1.10;font-size:clamp(38px,4.05vw,64px)}
+.story h1 em{color:#143d2b;display:inline}
+.story p{color:#244023;font-size:16px;max-width:445px;line-height:1.74}
+.story-footer{color:#315232;font-size:13px;font-weight:700}
+.main{background:linear-gradient(133deg,#fff 0%,#fafff5 100%)}
+.main:before{content:'';position:absolute;top:0;right:0;width:32%;height:6px;background:var(--lime);border-radius:0 0 0 8px}
+.login{position:relative}
+.login:before{content:'';position:absolute;top:-39px;left:0;height:5px;width:44px;border-radius:9px;background:var(--lime)}
+.mini-brand .brand-mark{background:#173b2b;color:var(--lime)}
+.overline{color:#367047}
+.login h2{letter-spacing:-1.05px;font-weight:800}
+.field label{font-size:13px}
+.input{border:1px solid #cfdfd2;border-radius:13px;box-shadow:0 1px 0 rgba(16,68,32,.025)}
+.input:focus{border-color:#60b75d;box-shadow:0 0 0 4px rgba(219,255,38,.32)}
+.primary{background:#2baa63;border-radius:13px;box-shadow:0 10px 26px rgba(26,123,60,.14);min-height:54px}
+.primary:hover{background:#198b4d;box-shadow:0 14px 30px rgba(26,123,60,.18)}
+.primary span[aria-hidden="true"]{background:#dbff26;color:#143c2f;border-radius:999px;display:grid;place-items:center;width:27px;height:27px;min-width:27px;font-weight:900}
+.note{color:#697c71}
+.code-input:focus{box-shadow:0 0 0 4px rgba(219,255,38,.32)}
+.secondary{color:#246e43}
+.appbar{background:#173e30;border-bottom:3px solid var(--lime);min-height:62px}
+.appbar .brand{color:white}
+.appbar .brand-mark{background:var(--lime);color:#173e30}
+.env-label{color:#dfff35;background:#e7ff1a14;border:1px solid #dfff3540}
+@media(max-width:940px){.story h1{font-size:42px;letter-spacing:-1.4px}}
+@media(max-width:740px){.login:before{top:-21px}.main{background:linear-gradient(155deg,#fdfff9,#fff)}.main:after{content:'';position:absolute;top:0;left:0;width:100%;height:7px;background:var(--lime)}.mini-brand{margin-bottom:47px}.login{max-width:490px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="shell" id="loginScreen">
+  <aside class="story" aria-hidden="true">
+    <div class="brand"><span class="brand-mark">M</span> My Cusco Trip</div>
+    <div class="story-main"><div class="eyebrow">Plataforma de gestión</div><h1>Con My Cusco Trip, <em>siempre tu operación a la mano.</em></h1><p>Una vista clara para seguir tus reservas, realizar consultas y gestionar tus servicios desde un mismo lugar.</p></div>
+    <div class="story-footer">My Cusco Trip · Acceso único</div>
+  </aside>
+  <main class="main">
+    <div class="login">
+      <div class="mini-brand"><span class="brand-mark">M</span> My Cusco Trip</div>
+      <section id="stepIdentity">
+        <div class="overline">Bienvenido</div>
+        <h2>Inicia sesión</h2>
+        <p class="intro">Ingresa tu correo y el teléfono asociado a tu cuenta para recibir un código de acceso.</p>
+        <form id="requestForm" autocomplete="on">
+          <div class="field"><label for="email">Correo electrónico</label><input class="input" id="email" type="email" autocomplete="email" placeholder="tu@correo.com" required></div>
+          <div class="field"><label for="country">Teléfono asociado</label><div class="rowphone"><div class="select-wrap"><select class="input" id="country" aria-label="País y código telefónico" required></select></div><input class="input" id="phone" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="Número de celular" required></div></div>
+          <p class="note">El código se enviará exclusivamente al correo asociado con tu teléfono.</p>
+          <button type="submit" id="requestBtn" class="primary">Solicitar acceso <span aria-hidden="true">→</span></button>
+          <p class="error" role="alert" id="requestError"></p>
+        </form>
+      </section>
+      <section id="stepOtp" class="hidden">
+        <button class="secondary back" id="backBtn" type="button">← Cambiar datos</button>
+        <div class="overline">Verificación</div><h2>Revisa tu correo</h2>
+        <p class="intro" id="sentLabel">Si los datos son correctos, recibirás un código de seis dígitos.</p>
+        <form id="codeForm"><div class="field"><label for="code">Código de seguridad</label><input class="input code-input" id="code" type="text" inputmode="numeric" pattern="[0-9]{6}" autocomplete="one-time-code" maxlength="6" placeholder="000000" required></div>
+        <button type="submit" id="verifyBtn" class="primary">Verificar e ingresar <span aria-hidden="true">→</span></button>
+        <p class="error" role="alert" id="verifyError"></p></form>
+        <div class="resendbar"><span id="countdown">Válido por 05:00</span><button type="button" class="secondary" id="resendBtn">Enviar otro código</button></div>
+      </section>
+      
+    </div>
+  </main>
+</div>
+<div class="apparea hidden" id="appArea">
+  <div class="appbar"><div class="brand"><span class="brand-mark">M</span> My Cusco Trip</div><span class="env-label">Vista de prueba</span><button id="logoutBtn" class="secondary" type="button">Cerrar sesión</button></div>
+  <div class="app-loading" id="appLoading"><div class="loading"><span class="spinner"></span> Cargando panel...</div></div>
+  <iframe class="appframe hidden" id="dashboardFrame" title="Panel de gestión My Cusco Trip"></iframe>
+</div>
+<?!= include_('Countries'); ?>
+<script>
+(function(){'use strict';
+const $=id=>document.getElementById(id);
+const storeKey='mct_private_session';
+let otpUntil=0, clock=null, token='', current=null;
+const gasReady=typeof google!=='undefined' && google.script && google.script.run;
+function flag(iso){return iso.toUpperCase().replace(/./g,x=>String.fromCodePoint(127397+x.charCodeAt(0)));}
+const select=$('country');
+if(typeof MCT_COUNTRIES!=='undefined'){
+  const most=['PE','CO','VE','CL','US','ES','MX','AR'];
+  const ordered=[...MCT_COUNTRIES].sort((a,b)=>{
+    const aa=most.indexOf(a.iso),bb=most.indexOf(b.iso);
+    if(aa!==-1||bb!==-1){if(aa===-1)return 1;if(bb===-1)return -1;return aa-bb;}
+    return a.name.localeCompare(b.name,'es');
+  });
+  select.replaceChildren(...ordered.map(c=>{
+    const opt=document.createElement('option');opt.value=c.iso;opt.textContent=flag(c.iso)+' '+c.name+' ('+c.dial+')';return opt;
+  }));
+  select.value='PE';
+}
+function setLoading(button,yes,label){button.disabled=yes;button.innerHTML=yes?'<span class="spinner"></span> '+label:label;}
+function say(id,msg){$(id).textContent=msg||'';}
+function gas(method,args){return new Promise((resolve,reject)=>{
+  if(!gasReady){reject(new Error('El acceso no está disponible en este momento.'));return;}
+  google.script.run.withSuccessHandler(resolve).withFailureHandler(reject)[method](args);
+});}
+function getIdentity(){return {email:$('email').value.trim().toLowerCase(),country:select.value,nationalNumber:$('phone').value.replace(/\D/g,'')};}
+$('requestForm').addEventListener('submit',async(e)=>{
+ e.preventDefault();say('requestError','');
+ const a=getIdentity();
+ if(!a.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(a.email) || a.nationalNumber.length<5){say('requestError','Revisa tu correo y el número de teléfono.');return;}
+ setLoading($('requestBtn'),true,'Enviando código');
+ try{
+  const r=await gas('requestLoginCode',a);if(!r.ok)throw new Error(r.message||'No fue posible solicitar el código.');
+  current=a;$('sentLabel').textContent='Si los datos están autorizados, enviamos un código a '+a.email+'.';
+  $('stepIdentity').classList.add('hidden');$('stepOtp').classList.remove('hidden');$('code').focus();startClock();
+ }catch(err){say('requestError',err.message||'No fue posible continuar.');}
+ finally{setLoading($('requestBtn'),false,'Solicitar acceso →');}
+});
+$('code').addEventListener('input',()=>{$('code').value=$('code').value.replace(/\D/g,'').slice(0,6);say('verifyError','')});
+function startClock(){otpUntil=Date.now()+300000;clearInterval(clock);clock=setInterval(()=>{
+ const seconds=Math.max(0,Math.ceil((otpUntil-Date.now())/1000));
+ $('countdown').textContent='Validez restante: '+String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');
+ if(!seconds)clearInterval(clock);
+},1000);}
+$('backBtn').addEventListener('click',()=>{$('stepOtp').classList.add('hidden');$('stepIdentity').classList.remove('hidden');clearInterval(clock);say('verifyError','');});
+$('resendBtn').addEventListener('click',async()=>{
+ if(!current)return;setLoading($('resendBtn'),true,'Enviando');say('verifyError','');
+ try{await gas('requestLoginCode',current);startClock();say('verifyError','Revisa tu correo para encontrar el nuevo código.');}catch(err){say('verifyError',err.message||'Inténtalo nuevamente.');}
+ finally{setLoading($('resendBtn'),false,'Enviar otro código');}
+});
+$('codeForm').addEventListener('submit',async(e)=>{
+ e.preventDefault();say('verifyError','');const code=$('code').value.trim();if(!/^\d{6}$/.test(code)){say('verifyError','Ingresa los seis dígitos.');return;}
+ setLoading($('verifyBtn'),true,'Validando');
+ try{const r=await gas('verifyLoginCode',{...current,code});if(!r.ok)throw new Error(r.message||'Código no válido.');
+  token=r.token;sessionStorage.setItem(storeKey,token);await showDashboard();
+ }catch(err){say('verifyError',err.message||'No se pudo validar el acceso.');}
+ finally{setLoading($('verifyBtn'),false,'Verificar e ingresar →');}
+});
+async function showDashboard(){
+ $('loginScreen').classList.add('hidden');$('appArea').classList.remove('hidden');$('appLoading').classList.remove('hidden');$('dashboardFrame').classList.add('hidden');
+ try{
+  const html=await gas('getDashboardHtml',token);
+  // El contenido se obtiene SOLO después de que el servidor valida la sesión.
+  const frame=$('dashboardFrame');frame.onload=()=>{$('appLoading').classList.add('hidden');frame.classList.remove('hidden');};
+  frame.srcdoc=html;
+ }catch(err){$('appArea').classList.add('hidden');$('loginScreen').classList.remove('hidden');say('requestError',err.message||'No se pudo cargar el panel.');sessionStorage.removeItem(storeKey);token='';}
+}
+async function logout(){const was=token;token='';sessionStorage.removeItem(storeKey);try{await gas('logoutSession',was);}catch(_err){}$('dashboardFrame').removeAttribute('srcdoc');$('appArea').classList.add('hidden');$('loginScreen').classList.remove('hidden');$('stepOtp').classList.add('hidden');$('stepIdentity').classList.remove('hidden');$('code').value='';}
+$('logoutBtn').addEventListener('click',logout);
+window.addEventListener('message',e=>{if(e.source===$('dashboardFrame').contentWindow&&e.data&&e.data.mct==='logout')logout();});
+(async()=>{const saved=sessionStorage.getItem(storeKey);if(saved&&gasReady){
+  try{const r=await gas('validateSession',saved);if(r.ok){token=saved;showDashboard();}else sessionStorage.removeItem(storeKey);}
+  catch(_err){sessionStorage.removeItem(storeKey);}
+  }
+})();
+})();
+</script>
+</body>
+</html>

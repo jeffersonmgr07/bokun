@@ -1,0 +1,91 @@
+/* My Cusco Trip – tema visual sobre el dashboard original.
+   No cambia las reservas, cifras, formularios ni funciones. */
+:root {
+  --primary: #07873e !important;
+  --primary-dark: #066832 !important;
+  --primary-soft: #eaf5ec !important;
+  --accent: #159958 !important;
+  --bg: #f3f7f3 !important;
+  --card: #ffffff !important;
+  --text: #18392f !important;
+  --muted: #687e73 !important;
+  --light: #edf4ee !important;
+  --line: #e0e9e1 !important;
+  --danger: #b74942 !important;
+  --warning: #a96e21 !important;
+  --shadow: 0 9px 28px rgba(11,55,30,.055) !important;
+  --header-h: 72px !important;
+}
+*{box-sizing:border-box}
+html,body{font-family:'DM Sans',Inter,system-ui,Arial,sans-serif!important;color:#203f34!important;background:#f3f7f3!important}
+html{scroll-behavior:smooth}body{letter-spacing:-.01em}
+a{color:#07873e!important}a:hover{text-decoration:underline;text-underline-offset:3px}
+button,input,select,textarea{font-family:inherit!important}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #a7d9b3!important;outline-offset:3px}
+.topbar{height:auto!important;min-height:72px!important;background:#173c2f!important;border:0!important;box-shadow:0 3px 15px rgba(20,66,41,.12)!important;padding:12px clamp(16px,2.1vw,38px)!important;gap:22px!important}
+.logo{font-family:Manrope,'DM Sans',sans-serif!important;font-size:19px!important;letter-spacing:-.65px!important;color:white!important;font-weight:850!important;cursor:pointer!important;min-width:155px!important;width:auto!important;line-height:1.15!important}
+.logo::after{content:none!important}.logo .nav-logo-img{display:none!important}
+.logo.mct-branded:before{content:'M';font-size:20px;display:inline-grid;place-items:center;width:36px;height:36px;min-width:36px;border-radius:11px;background:#ddf2df;color:#1c773f;margin-right:10px;letter-spacing:0;vertical-align:middle}
+.nav{gap:7px!important;align-items:center!important;min-height:47px!important}
+.nav button{height:auto!important;min-height:41px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:10px 12px!important;border-radius:9px!important;color:#d6e4d8!important;font-size:13px!important;font-weight:700!important;transition:background .18s,color .18s!important}
+.nav button:hover{background:rgba(255,255,255,.1)!important;color:#fff!important;text-decoration:none!important}
+.nav button.active{background:#e1f2e4!important;color:#17432b!important}
+.nav button.active:after{display:none!important}
+.account-btn{color:#fff!important;background:rgba(255,255,255,.08)!important;padding:10px 13px!important;border-radius:10px!important;font-size:13px!important;font-weight:750!important}
+.account-btn:hover{background:rgba(255,255,255,.16)!important}.divider{color:#668b75!important}.help-link{color:#e1eee4!important;font-size:13px!important}
+.account-menu{border:1px solid #dde8e0!important;border-radius:15px!important;overflow:hidden!important;box-shadow:0 18px 48px rgba(15,44,30,.18)!important;top:48px!important;right:0!important;width:250px!important}
+.account-menu button{font-size:13px!important;padding:12px 18px!important;color:#1a4230!important;background:#fff!important}.account-menu button:hover{background:#e9f4ed!important}
+.mobile-menu-btn{color:#fff!important;font-size:24px!important}
+.layout{max-width:1600px!important;margin:0 auto!important;padding:clamp(23px,3vw,44px) clamp(15px,3vw,42px) 84px!important}
+.page-title{font-family:Manrope,'DM Sans',sans-serif!important;font-size:clamp(28px,3vw,39px)!important;letter-spacing:-1.35px!important;line-height:1.25!important;font-weight:800!important;color:#143a2d!important;margin:0 0 26px!important}
+.page-section{animation:fadeIn .2s ease}
+.wide-card,.card,.content-card,.side-card,.booking-card,.finance-card,.payments-panel,.market-card,.market-modal-card,.review-card,.metric-card,.product-row,.availability-row{border-radius:16px!important;border:1px solid #e4ece4!important;box-shadow:var(--shadow)!important;background:#fff!important}
+.wide-card,.card,.content-card{overflow:hidden}
+.success-alert{border-left:4px solid #1b9450!important;padding:clamp(20px,2.4vw,30px)!important;min-height:115px!important;gap:13px!important;margin-bottom:22px!important}
+.success-alert h2{font-size:clamp(21px,2vw,26px)!important;color:#17643a!important;font-weight:800!important}
+.success-alert p{font-size:clamp(13px,1.4vw,16px)!important;color:#738478!important;font-weight:500!important}
+.big-icon,.side-icon{background:#eaf5ee!important;color:#16854a!important;width:54px!important;height:54px!important;min-width:54px!important;font-size:23px!important;margin-right:12px!important}
+.two-col{gap:19px!important}.metric-card{min-height:330px!important;padding:29px!important}.metric-title{gap:12px!important;margin-bottom:18px!important}.metric-title h2{font-size:24px!important;color:#153b2c!important}.metric-card p{font-size:15px!important;line-height:1.65!important}.metric-row{border-color:#ecf1ec!important;padding-top:17px!important;padding-bottom:17px!important}
+.finance-grid{gap:16px!important;margin-top:18px!important}.finance-card{padding:24px!important;min-width:0}.finance-card h3{font-size:14px!important;color:#587362!important;letter-spacing:.02em;font-weight:700!important}.finance-card .money{font-family:Manrope,sans-serif!important;font-size:clamp(22px,2.3vw,32px)!important;color:#18492e!important;font-weight:800!important;letter-spacing:-1px!important}.finance-card p{font-size:13px!important;color:#7c8f83!important}
+.finance-card,.metric-card,.booking-card,.market-card,.product-row,.review-card{transition:transform .18s,box-shadow .18s!important}.market-card:hover,.booking-card:hover,.product-row:hover{box-shadow:0 16px 36px rgba(17,68,36,.09)!important;transform:translateY(-2px)}
+.payments-panel{overflow:hidden!important}.payments-head{padding:22px 24px!important}.payments-head h2{font-size:22px!important;color:#173f2f!important}.payments-head p{font-size:13px!important;color:#74887a!important}.payments-summary{font-size:13px!important;color:#295c3e!important;border-radius:10px!important}
+.payments-table-wrap{overflow:auto!important}.payments-table{width:100%!important;min-width:650px!important;border-collapse:collapse!important}.payments-table th{background:#eaf3ec!important;color:#346147!important;font-size:12px!important;font-weight:800!important;padding:14px 15px!important;text-transform:none!important}.payments-table td{padding:12px 15px!important;color:#314e3d!important;font-size:13px!important;border-color:#edf1ec!important}.payments-table tbody tr:nth-child(even){background:#f9fbf9!important}.payments-table tbody tr:hover{background:#eef7f0!important}
+.payment-status{border-radius:20px!important;padding:5px 10px!important;font-size:11px!important;font-weight:750!important}.payment-status.paid{background:#e3f4e8!important;color:#08733b!important}.payment-status.processing{background:#fff4dd!important;color:#8d6314!important}.payment-status.scheduled{background:#eef0f7!important;color:#556184!important}
+.filters,.pro-filters,.product-tools,.availability-tools,.market-toolbar{gap:12px!important}.field,.select-like,input[type="text"],input[type="date"],select{border-radius:10px!important;border-color:#d9e5db!important;color:#1f4936!important;box-shadow:none!important}
+.field:focus-within,.select-like:focus-visible,input:focus-visible{border-color:#4db374!important;box-shadow:0 0 0 3px rgba(7,135,62,.1)!important}
+.solid-btn,.search-btn,.outline-btn,.product-actions button,.details-toggle,.quick-filter,.btn,.link-btn{border-radius:10px!important;font-size:13px!important;font-weight:760!important;transition:background .16s,transform .16s!important}
+.solid-btn,.search-btn{background:#07873e!important;color:#fff!important;border-color:#07873e!important}.solid-btn:hover,.search-btn:hover{background:#056e34!important;transform:translateY(-1px)}
+.outline-btn,.quick-filter{border-color:#c9e2d0!important;color:#08783a!important;background:#f9fdf9!important}.outline-btn:hover,.quick-filter:hover{background:#eaf5ec!important}
+.tabs{border-bottom:1px solid #e4ece5!important;gap:8px!important;overflow:auto!important}.tabs button{padding:10px 13px!important;border-radius:9px 9px 0 0!important;font-size:13px!important;white-space:nowrap!important}.tabs button.active{color:#087b3b!important;border-color:#07873e!important;background:#f1f7f2!important}
+.booking-card{padding:clamp(17px,2.3vw,26px)!important;margin-bottom:17px!important;overflow:visible!important}.booking-top{gap:12px!important}.booking-card h2{font-family:Manrope,sans-serif!important;color:#214532!important;line-height:1.3!important;font-size:clamp(18px,1.8vw,23px)!important}.booking-card .subtitle{font-size:14px!important;color:#748a7b!important}.booking-grid{background:#f7faf7!important;border-radius:11px!important;padding:15px!important;gap:14px!important}.booking-details{border-color:#e6efe7!important}.details-toggle{color:#07873e!important}.badge,.market-badge{border-radius:100px!important;padding:5px 9px!important;font-size:11px!important}
+.market-grid{gap:17px!important}.market-card{padding:20px!important}.market-card h3{font-size:17px!important;color:#183d2c!important}.market-amount{font-family:Manrope,sans-serif!important;font-size:23px!important;color:#17693d!important}.market-modal,.modal-notice{background:rgba(12,30,18,.55)!important;backdrop-filter:blur(4px)}.market-modal-card,.modal-notice-card{border-radius:17px!important;box-shadow:0 25px 80px #0d271c3d!important}
+.side-card,.content-card{padding:clamp(19px,2.5vw,29px)!important}.side-card h3{color:#153a2a!important}.side-card p{color:#738579!important}
+.product-row,.availability-row,.perf-row{border-color:#e4ece6!important}.product-row{padding:15px!important}.product-row:hover,.availability-row:hover{background:#f8fbf8!important}
+.bokun-banner{border-radius:13px!important;box-shadow:0 7px 18px rgba(10,45,30,.07)!important}.help-button{background:#07873e!important;color:#fff!important;border-radius:999px!important;box-shadow:0 7px 24px rgba(7,135,62,.22)!important}
+.mct-private-mark{display:inline-flex;align-items:center;margin-left:8px;border:1px solid #c5e5d1;color:#237d4c;background:#f1faf3;border-radius:100px;font:700 10px 'DM Sans',sans-serif;padding:4px 8px}
+@media(max-width:1250px){.topbar{gap:12px!important}.nav{gap:2px!important}.nav button{padding:9px 8px!important;font-size:12px!important}.logo{min-width:135px!important}}
+@media(max-width:960px){.topbar{flex-wrap:wrap!important}.mobile-menu-btn{display:block!important}.nav{background:#173c2f!important;order:9;width:100%!important;flex-direction:column!important;align-items:stretch!important;display:none!important;padding:12px!important;border-radius:0 0 14px 14px!important;height:auto!important}.nav.show{display:flex!important}.nav button{justify-content:flex-start!important;font-size:14px!important;padding:12px!important}.layout{padding:25px 18px 70px!important}.two-col{grid-template-columns:1fr!important}.finance-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:600px){.topbar{min-height:60px!important;padding:10px 13px!important}.logo{font-size:16px!important;min-width:auto!important}.logo.mct-branded:before{width:30px;height:30px;min-width:30px;font-size:17px;margin-right:7px}.right-tools{gap:8px!important}.account-btn{font-size:11px!important;padding:7px!important}.divider,.help-link{display:none!important}.finance-grid{grid-template-columns:1fr!important}.success-alert{padding:18px!important;min-height:100px!important}.metric-card{padding:20px!important;min-height:0!important}.page-title{font-size:28px!important}.booking-grid{grid-template-columns:1fr!important}.details-columns{grid-template-columns:1fr!important}.payments-head{flex-direction:column!important;align-items:flex-start!important}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+
+/* Acentos neón discretos inspirados en la referencia visual: sin alterar los datos. */
+:root{--mct-lime:#dbff26;--mct-lime-soft:#f3ffc0}
+.topbar{border-bottom:3px solid var(--mct-lime)!important;position:sticky!important}
+.logo.mct-branded:before{background:var(--mct-lime)!important;color:#173c2f!important}
+.nav button.active{color:var(--mct-lime)!important}
+.nav button.active::after{background:var(--mct-lime)!important;height:3px!important;border-radius:4px!important}
+.nav button:focus-visible{outline:2px solid var(--mct-lime)!important}
+.success-alert{border-left-color:var(--mct-lime)!important}
+.metric-card{position:relative!important;overflow:hidden!important}
+.metric-card:before{content:'';position:absolute;top:0;left:0;height:4px;width:88px;background:var(--mct-lime);border-radius:0 0 5px 0}
+.metric-title .line-icon{color:#184d31!important}
+.tabs button.active{background:var(--mct-lime-soft)!important;border-color:#bdde34!important;color:#244930!important}
+.finance-card{position:relative!important;overflow:hidden!important}
+.finance-card:nth-child(2):before{content:'';position:absolute;top:0;right:0;width:70px;height:5px;background:var(--mct-lime);border-radius:0 0 0 8px}
+.money{letter-spacing:-.045em!important}
+.booking-top .badge,.market-badge{font-weight:750!important}
+.help-button:before{content:'';display:inline-block;width:7px;height:7px;min-width:7px;border-radius:50%;background:var(--mct-lime);margin-right:2px}
+.mct-private-mark{background:var(--mct-lime-soft)!important;color:#325d33!important;border-color:#cfeb65!important}
+.outline-btn:focus-visible,.quick-filter:focus-visible{outline-color:#bddf21!important}
+@media(max-width:960px){.nav button.active{background:rgba(219,255,38,.09)!important;color:var(--mct-lime)!important}}
