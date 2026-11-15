@@ -89,3 +89,17 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 .mct-private-mark{background:var(--mct-lime-soft)!important;color:#325d33!important;border-color:#cfeb65!important}
 .outline-btn:focus-visible,.quick-filter:focus-visible{outline-color:#bddf21!important}
 @media(max-width:960px){.nav button.active{background:rgba(219,255,38,.09)!important;color:var(--mct-lime)!important}}
+
+/* UX 2026: navegación visible y datos de contacto sin botón Show. */
+.nav button.active,.nav button.active:hover,.nav button.active:focus{
+  background:rgba(219,255,38,.12)!important;
+  color:#dbff26!important;
+  border:1px solid rgba(219,255,38,.30)!important;
+  box-shadow:none!important;
+}
+.nav button.active::after{display:none!important}
+.masked-phone .show-link{display:none!important}
+@media(max-width:960px){
+  .nav button.active{background:rgba(219,255,38,.14)!important;color:#dbff26!important}
+}
+
