@@ -18,3 +18,168 @@
     },true);
   } catch(_err) {}
 })();
+
+
+/* Complementos de navegación y catálogo - noviembre 2026.
+   Los datos son de demostración y el calendario financiero es una proyección. */
+(function(){
+  "use strict";
+  try {
+    // Mantener un solo encabezado: el del panel que incluye su navegación.
+    var header = document.querySelector(".topbar");
+    if (header) header.setAttribute("aria-label","Navegación principal My Cusco Trip");
+
+    // El número en la ficha queda visible sin un botón "Show" superfluo.
+    var hidePhoneAction = document.createElement("style");
+    hidePhoneAction.textContent = ".masked-phone .show-link{display:none!important}";
+    document.head.appendChild(hidePhoneAction);
+
+    // Actualizar únicamente fechas del catálogo de prueba, nunca reservas reales.
+    if (typeof marketplaceBookings !== "undefined" && Array.isArray(marketplaceBookings)) {
+      var minDate = new Date();
+      minDate.setHours(0,0,0,0);
+      minDate.setDate(minDate.getDate() + 7);
+      var weekdays = ["dom","lun","mar","mié","jue","vie","sáb"];
+      var months = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+      marketplaceBookings.forEach(function(item,i){
+        var previousDate = typeof parseBookingDate==="function" ? parseBookingDate(item.date) : 0;
+        if (!previousDate || previousDate < minDate.getTime()) {
+          var target = new Date(minDate);
+          target.setDate(target.getDate() + Math.floor(i/3)*2 + i%3);
+          item.date = weekdays[target.getDay()] + ", " + target.getDate() +
+             " " + months[target.getMonth()] + " " + target.getFullYear();
+        }
+        item.origin = "Catálogo de demostración";
+      });
+      if (typeof renderMarketplace === "function") {
+        var originalRenderMarketplace = renderMarketplace;
+        renderMarketplace = function(){
+          var result = originalRenderMarketplace.apply(this,arguments);
+          document.querySelectorAll("#marketplaceGrid .market-badge:not(.off)").forEach(function(el){
+            el.textContent = "Ejemplo disponible";
+          });
+          return result;
+        };
+        renderMarketplace();
+      }
+    }
+
+    // Confirmación obligatoria antes de incorporar una reserva de ejemplo.
+    // Se usa captura para ejecutarla ANTES del onclick heredado del dashboard.
+    document.addEventListener("click",function(event){
+      var target = event.target && event.target.closest && event.target.closest("#takeMarket");
+      if(!target || target.disabled) return;
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      if(!window.confirm("¿Estás seguro de que deseas tomar esta reserva?")) return;
+      var originalClick = target.onclick;
+      if(typeof originalClick === "function"){
+        originalClick.call(target);
+        // La aceptación es local al navegador, sin generar una reserva real.
+        try {
+          var saved = JSON.parse(localStorage.getItem("acceptedMarketplaceBookings") || "[]");
+          if(Array.isArray(saved) && saved.length){
+            saved[saved.length-1].status = "Tomada (ejemplo)";
+            saved[saved.length-1].origin = "Catálogo de demostración";
+            saved[saved.length-1].supplierConfirmation = "MUESTRA-" + String(saved.length).padStart(4,"0");
+            localStorage.setItem("acceptedMarketplaceBookings",JSON.stringify(saved));
+            if (typeof renderBookings === "function") renderBookings();
+            if (typeof renderMarketplace === "function") renderMarketplace();
+          }
+        } catch(_error){}
+      }
+    },true);
+
+    // Calendario único de pagos de los tres cronogramas: ningún "pagado"
+    // nuevo se infiere de la fecha. La fecha vencida requiere conciliación.
+    var scheduled = [
+      ["2026-07-22",9,"Caja Huancayo",6259.00],
+      ["2026-08-26",9,"Caja Huancayo",9388.50],
+      ["2026-07-22",10,"Caja Huancayo",2399.60],
+      ["2026-08-05",11,"Caja Huancayo",1479.90],
+      ["2026-07-27",12,"Caja Huancayo",1189.00],
+      ["2026-09-02",18,"Caja Huancayo",1506.70],
+      ["2026-09-09",20,"Caja Huancayo",3174.50],
+      ["2026-09-09",21,"Caja Huancayo",1239.80],
+      ["2026-09-30",22,"Caja Huancayo",1299.80],
+      ["2026-09-30",23,"Caja Huancayo",2489.60],
+      ["2026-09-16",25,"Caja Huancayo",11892.10],
+      ["2026-10-07",26,"Caja Huancayo",1239.00],
+      ["2026-11-10",27,"Caja Huancayo",3755.40],
+      ["2026-10-14",28,"Caja Huancayo",1679.70],
+      ["2026-11-03",30,"Caja Huancayo",2519.60],
+      ["2026-11-17",31,"Caja Huancayo",1251.00],
+      ["2026-11-24",32,"Caja Huancayo",7979.20],
+      ["2026-08-05",14,"Silvia",1279.80],
+      ["2026-08-19",15,"Silvia",2459.60],
+      ["2026-08-19",16,"Silvia",1089.80],
+      ["2026-08-26",17,"Silvia",1922.70],
+      ["2026-09-09",19,"Silvia",1209.80],
+      ["2026-10-21",24,"Silvia",1119.80],
+      ["2026-10-14",29,"Silvia",1189.00],
+      ["2026-09-22",33,"Interbank",1251.80],
+      ["2026-11-10",34,"Interbank",2099.70],
+      ["2026-10-06",35,"Interbank",1877.70],
+      ["2026-11-17",36,"Interbank",1179.80],
+      ["2026-11-17",37,"Interbank",1399.80],
+      ["2026-11-10",38,"Interbank",1877.70],
+      ["2026-11-24",39,"Interbank",1251.80],
+      ["2026-11-10",40,"Interbank",1251.80],
+      ["2026-11-10",41,"Interbank",1179.80],
+      ["2026-11-10",42,"Interbank",1399.80],
+      ["2026-11-17",43,"Interbank",1251.80],
+      ["2026-11-17",44,"Interbank",1179.80],
+      ["2026-11-17",45,"Interbank",1399.80],
+      ["2026-11-17",46,"Interbank",1251.80],
+      ["2026-11-24",47,"Interbank",1179.80],
+      ["2026-11-24",48,"Interbank",1399.80],
+      ["2026-11-24",49,"Interbank",1251.80],
+      ["2026-12-01",50,"Interbank",1179.80],
+      ["2026-12-01",51,"Interbank",1399.80],
+      ["2026-12-01",52,"Interbank",1251.80],
+      ["2026-12-01",53,"Interbank",1179.80],
+      ["2026-12-08",54,"Interbank",1399.80],
+      ["2026-12-08",55,"Interbank",1251.80]
+    ];
+    var finance = document.querySelector('.page-section[data-section="finanzas"]');
+    if(finance){
+      var financeHead = finance.querySelector(".page-title");
+      if(financeHead) financeHead.textContent = "Finanzas";
+      var explanation = document.createElement("p");
+      explanation.textContent = "Vista de demostración: los importes y estados requieren conciliación con los depósitos efectivos.";
+      explanation.style.cssText = "font-size:12px;color:#697f71;margin:-12px 0 22px;line-height:1.6";
+      if(financeHead) financeHead.insertAdjacentElement("afterend",explanation);
+      var container = document.createElement("section");
+      container.className = "payments-panel mct-planned-payments";
+      container.style.cssText = "margin-top:22px;overflow:hidden";
+      var h = document.createElement("div");
+      h.className = "payments-head";
+      h.innerHTML = '<div><h2>Calendario de cobros previstos</h2><p>Fechas e importes de los tres cronogramas. No confirma depósitos ni retiros.</p></div>';
+      container.appendChild(h);
+      var wrap = document.createElement("div");
+      wrap.className = "payments-table-wrap";
+      var t = document.createElement("table");
+      t.className = "payments-table";
+      t.setAttribute("aria-label","Calendario de cobros de referencia");
+      t.innerHTML = "<thead><tr><th>Fecha</th><th>Capital</th><th>Reserva</th><th>Situación</th><th style='text-align:right'>Importe</th></tr></thead><tbody></tbody>";
+      var tbody=t.querySelector("tbody");
+      var today = new Date(); today.setHours(0,0,0,0);
+      var money = new Intl.NumberFormat("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+      scheduled.sort(function(a,b){return a[0].localeCompare(b[0]) || a[1]-b[1]}).forEach(function(record){
+        var tr = document.createElement("tr");
+        var when = new Date(record[0]+"T00:00:00");
+        var flag = when.getTime()<today.getTime() ? "Por verificar" : when.getTime()===today.getTime() ? "Previsto hoy" : "Programado";
+        [record[0].slice(8,10)+"/"+record[0].slice(5,7)+"/"+record[0].slice(0,4),record[2],"R"+record[1],flag,"US$ "+money.format(record[3])].forEach(function(value,i){
+          var td=document.createElement("td");td.textContent=value;
+          if(i===4)td.style.textAlign="right";
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+      wrap.appendChild(t);container.appendChild(wrap);finance.appendChild(container);
+    }
+  } catch(error){
+    console.warn("No fue posible completar una adaptación visual del panel.",error);
+  }
+})();
